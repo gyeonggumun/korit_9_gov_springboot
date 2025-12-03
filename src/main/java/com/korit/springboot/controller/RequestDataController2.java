@@ -53,12 +53,17 @@ public class RequestDataController2 {
         return ResponseEntity.ok().build();
     }
 
-    // PUT 요청 데이터 받는 방법 1  -  JSON 데이터만 보통 사용
-    @PutMapping("/req/data")
-    public ResponseEntity<?> reqPut1(@RequestBody ReqJsonDto2 dto) {  // JSON관련은 RequestBody를 붙여야함
+    // PUT 요청 데이터 받는 방법 1  -  JSON 데이터만 보통 사용 여러개 수정 할 때
+    @PutMapping("/req/data1/{id}")
+    public ResponseEntity<?> reqPut1(@PathVariable int id, @RequestBody ReqJsonDto2 dto) {  // JSON관련은 RequestBody를 붙여야함
         System.out.println(dto);
         return ResponseEntity.ok().build();
     }
 
-
+    // PATCH 요청 데이터 받는 방법 1 -  JSON 데이터만 보통 사용 한개만 수정 할 때
+    @PatchMapping("/req/data1/{id}")
+    public ResponseEntity<?> reqPatch(@PathVariable int id, @RequestBody ReqJsonDto2 dto) {
+        System.out.println(dto);
+        return ResponseEntity.ok().build();
+    }
 }
