@@ -66,4 +66,11 @@ public class RequestDataController2 {
         System.out.println(dto);
         return ResponseEntity.ok().build();
     }
+
+    // DELETE 요청 데이터 받는 방법 1  - 실수를 방지하기위해 delete는 데이터 하나로 받는 것을 약속으로 함
+    @DeleteMapping("/req/data1/{id}")
+    public ResponseEntity<?> reqDelete(@PathVariable int id) {
+        System.out.println(id);
+        return ResponseEntity.ok().build();
+    }
 }
