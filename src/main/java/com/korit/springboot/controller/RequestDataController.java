@@ -1,5 +1,6 @@
 package com.korit.springboot.controller;
 
+import com.korit.springboot.dto.ReqDataDto6;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,13 +63,11 @@ public class RequestDataController {
 
     // GET 요청 파라미터 받는 방법 6  -  파라미터가 많아졌을 때 DTO로 처리하는 방법
     @GetMapping("/req/data6")
-    public ResponseEntity<Map<String, String >> reqGet6(
-            @RequestParam String name,
-            @RequestParam Integer age,
-            @RequestParam String address,
-            @RequestParam String phone) {
-        System.out.println("data6: " + name);
-        System.out.println("data6: " + age);
+    public ResponseEntity<Map<String, String >> reqGet6(ReqDataDto6 dto) {
+        System.out.println("data6: " + dto.getName());
+        System.out.println("data6: " + dto.getAge());
+        System.out.println("data6: " + dto.getAddress());
+        System.out.println("data6: " + dto.getPhone());
         return ResponseEntity.ok().build();
     }
 
