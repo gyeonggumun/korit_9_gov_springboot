@@ -4,10 +4,7 @@ import com.korit.springboot.dto.ReqFormDataDto4;
 import com.korit.springboot.dto.ReqJsonDto2;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -55,4 +52,13 @@ public class RequestDataController2 {
         files.forEach(file -> System.out.println(file.getOriginalFilename()));
         return ResponseEntity.ok().build();
     }
+
+    // PUT 요청 데이터 받는 방법 1  -  JSON 데이터만 보통 사용
+    @PutMapping("/req/data")
+    public ResponseEntity<?> reqPut1(@RequestBody ReqJsonDto2 dto) {  // JSON관련은 RequestBody를 붙여야함
+        System.out.println(dto);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
