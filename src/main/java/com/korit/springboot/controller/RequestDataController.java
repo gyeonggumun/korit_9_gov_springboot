@@ -3,19 +3,18 @@ package com.korit.springboot.controller;
 import com.korit.springboot.dto.ReqDataDto6;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class RequestDataController {
 
     // GET /req/data 메서드명: reqGet
 
     // GET 요청 파라미터 받는 방법 1
+//    @CrossOrigin("http://loclhost:5173")
     @GetMapping("/req/data1")
     public ResponseEntity<Map<String, String >> reqGet1(HttpServletRequest request) {
         String name = request.getParameter("a");
@@ -73,7 +72,7 @@ public class RequestDataController {
     }
 
     // GET 요청 파라미터 받는 방법 6  -  파라미터가 많아졌을 때 DTO로 처리하는 방법
-    @GetMapping("/req/data7/{id}")
+    @GetMapping("/req/{path}/data7/{id}")
     public ResponseEntity<Map<String, String >> reqGet7(
             @PathVariable int id,
             @PathVariable String path,
