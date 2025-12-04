@@ -3,7 +3,7 @@ package com.korit.springboot.dto;
 import lombok.Data;
 
 @Data
-public class InsertDto {
+public class RequestInsertStudyDto {
     private String name;
     private int age;
 }
