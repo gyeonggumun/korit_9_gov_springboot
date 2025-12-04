@@ -44,7 +44,7 @@ public class ResponseDataController {
         respJsonDto.setName("김준일");
         respJsonDto.setEmail("test12@gmail.com");
         respJsonDto.setReqJsonDto2(new ReqJsonDto2());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(respJsonDto);
     }
 
     @GetMapping("/resp/data5")
