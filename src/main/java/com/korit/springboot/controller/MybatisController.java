@@ -1,6 +1,8 @@
 package com.korit.springboot.controller;
 
+import com.korit.springboot.dto.RequestInsertProductDto;
 import com.korit.springboot.dto.RequestInsertStudyDto;
+import com.korit.springboot.mapper.ProductMapper;
 import com.korit.springboot.mapper.StudyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,8 @@ public class MybatisController {
 
     @Autowired    //
     private StudyMapper studyMapper;
+    @Autowired
+    private ProductMapper priceMapper;
 
 //    @PostMapping("/mybatis/study")
 //    public ResponseEntity<?> insert(String name, int age) {
@@ -29,6 +33,12 @@ public class MybatisController {
     @PostMapping("/mybatis/study")
     public  ResponseEntity<?> insert(@RequestBody RequestInsertStudyDto dto) {
         studyMapper.insert(dto.getName(), dto.getAge());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/mybatis/product")
+    public ResponseEntity<?> productInsert(@RequestBody RequestInsertProductDto dto) {
+        priceMapper.insert(dto.getProductName(), dto.getSize(), dto.getPrice());
         return ResponseEntity.ok().build();
     }
 }
