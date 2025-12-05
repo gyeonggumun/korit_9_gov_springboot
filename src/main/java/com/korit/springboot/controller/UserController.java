@@ -3,7 +3,9 @@ package com.korit.springboot.controller;
 
 import com.korit.springboot.dto.CreateUserReqDto;
 import com.korit.springboot.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/api/users")
-    public ResponseEntity<?> create(@RequestBody CreateUserReqDto dto) {
+    public ResponseEntity<?> create(@Valid @RequestBody CreateUserReqDto dto) {
         userService.createUser(dto);
         return ResponseEntity.ok().build();
     }
