@@ -1,6 +1,8 @@
 package com.korit.springboot.dto;
 
 import com.korit.springboot.entity.UserEntity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -11,7 +13,10 @@ public class CreateUserReqDto {
     private String username;
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^A-Za-z0-9])[A-Za-z0-9^A-Za-z0-9\\W]{8,16}$", message="비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.")
     private String password;
+    @Pattern(regexp = "^[가-힣]{2,6}$", message = "이름: 2~6자의 한글을 사용해주세요.")
     private String name;
+    @NotBlank
+    @Email
     private String email;
 
     public UserEntity toEntity() {
