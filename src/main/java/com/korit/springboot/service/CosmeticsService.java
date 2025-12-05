@@ -13,7 +13,7 @@ public class CosmeticsService {
 
     private final CosmeticsMapper cosmeticsMapper;
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void createCosmetics(CreatCosmeticsReqDto dto) {
         CosmeticsEntity cosmeticsEntity = dto.toEntity();
         cosmeticsMapper.insert(cosmeticsEntity);
