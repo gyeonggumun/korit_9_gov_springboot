@@ -4,9 +4,23 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.korit.springboot.mapper.CosmeticsMapper">
-
+<resultMap id="cosmeticsEntity" type="com.korit.springboot.entity.CosmeticsEntity">
+    <id property="cosmeticsId" column="cosmetics_id"/>
+    <result property="cosmeticsName" column="cosmetics_name"/>
+    <result property="price" column="price" />
+</resultMap>
     <insert id="insert">
         insert into cosmetics_tb
         values (default, #{cosmeticsName}, #{price})
     </insert>
+    <select id="findCosmeticsByCosmeticsName" resultType="cosmeticsEntity">
+        select
+            cosmetics_id,
+            cosmetics_name,
+            price
+        from
+            cosmetics_tb
+        where
+            cosmetics_name = #{cosmeticsName}
+    </select>
 </mapper>
