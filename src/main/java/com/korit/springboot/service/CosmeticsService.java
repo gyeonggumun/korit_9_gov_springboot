@@ -14,9 +14,9 @@ public class CosmeticsService {
     private final CosmeticsMapper cosmeticsMapper;
 
     @Transactional(rollbackFor = Exception.class)
-    public void createCosmetics(CreatCosmeticsReqDto dto) {
+    public int createCosmetics(CreatCosmeticsReqDto dto) {
         CosmeticsEntity cosmeticsEntity = dto.toEntity();
         cosmeticsMapper.insert(cosmeticsEntity);
-
+        return cosmeticsEntity.getCosmeticsId();
     }
 }
