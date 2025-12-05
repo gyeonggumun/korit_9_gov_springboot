@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CosmeticsMapper {
     int insert(CosmeticsEntity cosmeticsEntity);
-    CosmeticsEntity findCosmeticsByCosmeticsName(@Param("cosmetics_name") String cosmeticsName);
+    CosmeticsEntity findCosmeticsByCosmeticsName(@Param("cosmeticsName") String cosmeticsName);
 }

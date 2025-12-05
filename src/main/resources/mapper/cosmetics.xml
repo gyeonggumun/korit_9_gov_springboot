@@ -9,7 +9,7 @@
     <result property="cosmeticsName" column="cosmetics_name"/>
     <result property="price" column="price" />
 </resultMap>
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="cosmeticsId">
         insert into cosmetics_tb
         values (default, #{cosmeticsName}, #{price})
     </insert>

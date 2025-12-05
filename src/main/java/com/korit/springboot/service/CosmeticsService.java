@@ -2,6 +2,7 @@ package com.korit.springboot.service;
 
 import com.korit.springboot.dto.CreatCosmeticsReqDto;
 import com.korit.springboot.entity.CosmeticsEntity;
+import com.korit.springboot.exception.DuplicatiedException;
 import com.korit.springboot.mapper.CosmeticsMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,12 @@ public class CosmeticsService {
         CosmeticsEntity cosmeticsEntity = dto.toEntity();
         cosmeticsMapper.insert(cosmeticsEntity);
         return cosmeticsEntity.getCosmeticsId();
+    }
+
+    public void duplicatedCosmeticsName(String cosmeticsName){
+        CosmeticsEntity foundCosmetics = cosmeticsMapper.findCosmeticsByCosmeticsName(cosmeticsName);
+        if(foundCosmetics != null){
+            throw new DuplicatiedException("cosmeticsName", "이미존재하는 화장품 이름입니다.");
+        }
     }
 }
