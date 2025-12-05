@@ -8,4 +8,10 @@
         insert into product_tb
         values (default, #{productName}, #{size}, #{price})
     </insert>
+    <select id="findProduct">
+        select
+            *
+        from
+            product_tb
+    </select>
 </mapper>

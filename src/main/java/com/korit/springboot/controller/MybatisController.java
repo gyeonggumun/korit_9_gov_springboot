@@ -52,4 +52,10 @@ public class MybatisController {
         List<Map<String, Object>> foundName = studyMapper.findAllName();
         return ResponseEntity.ok(foundName);
     }
+
+    @GetMapping("/mybatis/product")
+    public ResponseEntity<?> selectProduct() {
+        List<Map<String, Object>> foundProduct = priceMapper.findProduct();
+        return ResponseEntity.ok(foundProduct);
+    }
 }
