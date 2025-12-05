@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -25,8 +27,8 @@ public class UserController {
     @PostMapping("/api/users")
     public ResponseEntity<?> create(@Valid @RequestBody CreateUserReqDto dto){
         userService.duplicatedUsername(dto.getUsername());
-        userService.createUser(dto);
-        return ResponseEntity.ok().build();
+        int createdUserId = userService.createUser(dto); // createUser에서 return 받은 id를 저장
+        return ResponseEntity.ok(Map.of("createdUserId", createdUserId));
     }
 
 

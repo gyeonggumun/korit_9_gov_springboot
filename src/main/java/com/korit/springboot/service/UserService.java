@@ -24,8 +24,11 @@ public class UserService {
     // 문제가 생겼을 때 적용(커밋)을 하지않도록 설정
     // insert, update, delect 할때는 Transactional을 걸어 주어야함
     @Transactional(rollbackFor = Exception.class)
-    public void createUser(CreateUserReqDto dto) {
-        userMapper.insert(dto.toEntity());
+    public int createUser(CreateUserReqDto dto) {
+        UserEntity userEntity = dto.toEntity();
+        userMapper.insert(userEntity);
+        return userEntity.getUserId();  // insert를 다녀오고 나면 userId가 들어가 있는 상태이기 때문에 그때 리턴으로 id를 리턴해준다
+
     }
 
     public void duplicatedUsername(String username) {

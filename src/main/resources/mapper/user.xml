@@ -17,7 +17,7 @@ property => 엔티티의 변수명    column => 데이터베이스 변수명
         <result property="email" column="email"/>
     </resultMap>
 
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="userId">
         insert into user_tb
         values (default, #{username}, #{password}, #{name}, #{email})
     </insert>
