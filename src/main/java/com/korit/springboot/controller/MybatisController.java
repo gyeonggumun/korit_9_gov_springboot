@@ -47,13 +47,17 @@ public class MybatisController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/mybatis/study")
+    @GetMapping("/mybatis/study/names")
     public ResponseEntity<?> selectName() {
-        List<Map<String, Object>> foundName = studyMapper.findAllName();
-        return ResponseEntity.ok(foundName);
+        return ResponseEntity.ok(studyMapper.findAllName());
     }
 
-    @GetMapping("/mybatis/product")
+    @GetMapping("/mybatis/study/all")
+    public ResponseEntity<?> selectAll() {
+        return ResponseEntity.ok(studyMapper.findAll());
+    }
+
+    @GetMapping("/mybatis/product/all")
     public ResponseEntity<?> selectProduct() {
         List<Map<String, Object>> foundProduct = priceMapper.findProduct();
         return ResponseEntity.ok(foundProduct);
