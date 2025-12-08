@@ -1,7 +1,6 @@
 package com.korit.springboot.controller;
 
 import com.korit.springboot.dto.SignupReqDto;
-import com.korit.springboot.mapper.UserMapper;
 import com.korit.springboot.service.AuthService;
 import com.korit.springboot.service.UserService;
 import jakarta.validation.Valid;
