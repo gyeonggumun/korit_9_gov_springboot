@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
 public class SignupReqDto {
@@ -21,15 +23,12 @@ public class SignupReqDto {
 
 
     // toEntity 이용 - builder - Entity 생성
-    public UserEntity toEntity() {
+    public UserEntity toEntity(BCryptPasswordEncoder passwordEncoder) {
         return UserEntity.builder()
                 .username(username)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .name(name)
                 .email(email)
                 .build();
     }
-
-
-
 }

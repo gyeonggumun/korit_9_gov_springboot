@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -79,5 +80,10 @@ public class SecurityConfig {
         //  /** : 모든 URL에 요청을 다 허용 -> 프론트앤드에서 서버로 요청을 날릴 수 있다.
         source.registerCorsConfiguration("/**", cors);
         return source;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder () {
+        return new BCryptPasswordEncoder();
     }
 }
