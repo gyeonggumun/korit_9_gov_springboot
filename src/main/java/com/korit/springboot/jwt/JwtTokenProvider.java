@@ -33,7 +33,7 @@ public class JwtTokenProvider {
                 .issuer("문경구") // 이름
                 .issuedAt(new Date()) // 현시간 설정
                 // 위 3개는 없어도 괜찮지만 아래 3개는 필수로 필요한 항목
-                .expiration(expiredDate) // 지속시간
+                .expiration(expiredDate) // 만료시간
                 .claim("userId", userEntity.getUserId())  // 몇번째유저인지
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
