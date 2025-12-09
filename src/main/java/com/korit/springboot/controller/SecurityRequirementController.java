@@ -17,10 +17,11 @@ public class SecurityRequirementController {
     public ResponseEntity<?> get(@AuthenticationPrincipal PrincipalUser principalUser) {
         System.out.println(principalUser.getUserId());
 
-//        PrincipalUser principalUser2 = (PrincipalUser) SecurityContextHolder.getContext()
-//                .getAuthentication()
-//                .getPrincipal();
-//        System.out.println(principalUser2.getUserId());
+        PrincipalUser principalUser2 = (PrincipalUser) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+        System.out.println(principalUser2.getUserId());
+        System.out.println(principalUser2.getUserEntity().getName());
         return ResponseEntity.ok("응답");
     }
 }
