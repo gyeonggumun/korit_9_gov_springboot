@@ -33,4 +33,16 @@ property => 엔티티의 변수명    column => 데이터베이스 변수명
         where
             username = #{username}
     </select>
+    <select id="findUserByUserId" resultType="userEntity">
+        select
+            user_id,
+            username,
+            password,
+            name,
+            email
+        from
+            user_tb
+        where
+            userId = #{userId}
+    </select>
 </mapper>

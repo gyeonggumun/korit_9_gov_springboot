@@ -21,20 +21,23 @@ public class OpenApiConfig {
         info.description("JWT 인증 적용을 위한 설정중."); // 설명
 
         SecurityRequirement securityRequirement = new SecurityRequirement();
-        securityRequirement.addList("Bearer Authentication");
+        securityRequirement.addList("Bearer Authentication"); // Bearer는 JWT토큰의 종류
 
+        // JWT인증을 적용하겠다는 코드
         SecurityScheme securityScheme = new SecurityScheme();
         securityScheme.name("Bearer Authentication");
         securityScheme.type(SecurityScheme.Type.HTTP);
         securityScheme.scheme("bearer");
         securityScheme.bearerFormat("JWT");
 
+        // Bearer토큰에 대한 셋팅을 추가해주는 코드
         Components components = new Components();
         components.addSecuritySchemes("Bearer Authentication", securityScheme);
 
+        //SecurityRequirementController에서 처럼 개별적으로 적용 가능
         return openAPI
                 .info(info)
-                .addSecurityItem(securityRequirement)
+                .addSecurityItem(securityRequirement) // 이 부분 비활성화시 적용이 다꺼짐
                 .components(components);
 
     }
